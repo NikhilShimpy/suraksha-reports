@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Report Disaster - Samudra Suraksha</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="citizen_report.css" />
+</head>
+<body>
+    <div class="container">
+        <h1>Report a Disaster</h1>
+        <form id="reportForm">
+            <label for="disasterType">Disaster Type</label>
+            <select id="disasterType" required>
+                <option value="">Select disaster type</option>
+                <option value="flood">Flood</option>
+                <option value="storm surge">Storm Surge</option>
+                <option value="landslide">Landslide</option>
+                <option value="earthquake">Earthquake</option>
+                <option value="tsunami">Tsunami</option>
+            </select>
+
+            <label for="state">State</label>
+            <select id="state" required>
+                <option value="">Select state</option>
+                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                <option value="Assam">Assam</option>
+                <option value="Bihar">Bihar</option>
+                <option value="Chhattisgarh">Chhattisgarh</option>
+                <option value="Goa">Goa</option>
+                <option value="Gujarat">Gujarat</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                <option value="Jharkhand">Jharkhand</option>
+                <option value="Karnataka">Karnataka</option>
+                <option value="Kerala">Kerala</option>
+                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                <option value="Maharashtra">Maharashtra</option>
+                <option value="Manipur">Manipur</option>
+                <option value="Meghalaya">Meghalaya</option>
+                <option value="Mizoram">Mizoram</option>
+                <option value="Nagaland">Nagaland</option>
+                <option value="Odisha">Odisha</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Rajasthan">Rajasthan</option>
+                <option value="Sikkim">Sikkim</option>
+                <option value="Tamil Nadu">Tamil Nadu</option>
+                <option value="Telangana">Telangana</option>
+                <option value="Tripura">Tripura</option>
+                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                <option value="Uttarakhand">Uttarakhand</option>
+                <option value="West Bengal">West Bengal</option>
+                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                <option value="Chandigarh">Chandigarh</option>
+                <option value="Dadra and Nagar Haveli and Daman & Diu">Dadra and Nagar Haveli and Daman & Diu</option>
+                <option value="Delhi">Delhi</option>
+                <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                <option value="Ladakh">Ladakh</option>
+                <option value="Lakshadweep">Lakshadweep</option>
+                <option value="Puducherry">Puducherry</option>
+            </select>
+
+
+            <label for="district">District</label>
+            <input type="text" id="district" required />
+
+            <label for="city">City</label>
+            <input type="text" id="city" />
+
+            <label for="town">Town</label>
+            <input type="text" id="town" />
+
+            <label for="village">Village / Area / Street</label>
+            <input type="text" id="village" />
+
+            <label for="latitude">Latitude</label>
+            <input type="text" id="latitude" readonly required />
+
+            <label for="longitude">Longitude</label>
+            <input type="text" id="longitude" readonly required />
+
+            <div id="map" style="height: 300px;"></div>
+
+            <label for="severityScore">Severity Score (1-10)</label>
+            <input type="number" id="severityScore" min="1" max="10" value="3" required />
+
+            <label for="description">Description</label>
+            <textarea id="description" rows="4" required></textarea>
+
+            <label for="media">Upload Images/Videos</label>
+            <input type="file" id="media" accept="image/*,video/*" multiple />
+
+            <button type="submit">Submit Report</button>
+        </form>
+
+        <div id="message"></div>
+        <div id="reportDetails"></div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+    <!-- Cloudinary -->
+    <script src="https://widget.cloudinary.com/v2.0/global/all.js"></script>
+
+    <!-- Leaflet -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <!-- Custom JS -->
+    <script src="citizen_report.js"></script>
+</body>
+</html>
+
+
